@@ -1,0 +1,11 @@
+{
+  "title": "General",
+  "description": "General information about CrabGame.dev",
+  "icon": "House",
+  "pages": [
+    "about",
+    "faq",
+    "[Discord Servers](/docs/general/discord)",
+    "[Contributors](/docs/general/contributors)"
+  ]
+}

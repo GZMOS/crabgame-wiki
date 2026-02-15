@@ -1,3 +1,24 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+/*@import "fumadocs-ui/css/catppuccin";*/
+@import "fumadocs-ui/css/solar.css";
+/*@import "fumadocs-ui/css/vitepress.css";*/
+/*@import "fumadocs-ui/css/dusk.css";*/
+@import "fumadocs-ui/css/preset.css";
+
+@layer base {
+    a,
+    .underline {
+        text-decoration-skip-ink: none;
+        text-underline-offset: 4px;
+    }
+}
+
+#nd-page:before {
+    display: none;
+}
+
+#nd-sidebar[data-collapsed="false"] {
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: var(--color-fd-border);
+}

@@ -1,0 +1,68 @@
+---
+title: FAQ
+description: Frequently asked questions about Crab Game and modding.
+---
+
+## General
+
+### Does modding get me banned?
+
+There is no official anti-cheat in Crab Game, and there have been no known bans for modding. Using mods that give you an unfair advantage in public lobbies is frowned upon by the community.
+
+<Callout type="warn">Modding is always at your own risk.</Callout>
+
+### Why are there no servers in the server list after installing BepInEx?
+
+The game detects BepInEx and hides servers from the list as a result. Some mods bypass this detection, such as [CrabGame.AntiAntiBepinex](https://github.com/o7Moon/CrabGame.AntiAntiBepinex) by o7Moon.
+
+### Where do I see BepInEx logs?
+
+Logs are written to `BepInEx/LogOutput.log` in your game folder. You can also enable the BepInEx console window in `BepInEx/config/BepInEx.cfg` by setting `Enabled = true` under `[Logging.Console]`.
+
+### Where do I start with modding?
+
+Head over to the [Modding](/docs/modding/getting-started/01-project-setup) section to get started.
+
+## Installation & Usage
+
+### Where can I find mods to download?
+
+Most Crab Game mods can be found on community hubs like [Thunderstore](https://thunderstore.io/c/crab-game/) or [GitHub](https://github.com/). You can also find active modding discussions and support in the some Crab Game modding Discord servers.
+
+### Do I have to install mods manually?
+
+No, you don't have to! While you can manually drag and drop files into your `BepInEx/plugins` folder, many players prefer using a mod manager like r2modman or the Thunderstore Mod Manager. These tools handle BepInEx installation, mod updates, and dependencies automatically.
+
+### How do I completely remove mods and BepInEx?
+
+If you used a mod manager, use it to uninstall everything from there. If you installed manually, go to your Crab Game directory and delete the `BepInEx` folder, the `doorstop_config.ini` file, and the `winhttp.dll` file. If you need help, check the [Discord servers](/docs/general/discord).
+
+### Can I mod Crab Game on a Steam Deck or Linux?
+
+Yes, but it requires an extra step. Because Crab Game runs through Proton on Linux/SteamOS, BepInEx won't hook into the game automatically. You need to open the game's Properties in Steam, go to the General tab, and paste this into your Launch Options:
+
+```
+WINEDLLOVERRIDES="winhttp=n,b" %command%
+```
+
+## Multiplayer Compatibility
+
+### Do my friends need to install the same mods for us to play together?
+
+It depends on the mod:
+
+- **Client-side mods** - These only affect your game (e.g. UI tweaks, custom crosshairs, client-side visuals). Your friends do not need these installed to play with you.
+- **Server-side mods** - Most of the time server-side mods only need to be installed by the host. However if you are using custom maps or mods that add new content, everyone in the lobby may need the same mods installed to avoid desyncs or crashes.
+
+<Callout type="warn">Always check the mod's description to know what's required!</Callout>
+
+## Contributing
+
+CrabGame.dev is community-maintained and open to contributions from anyone. The source code is on [GitHub](https://github.com/GZMOS/crabgame-wiki).
+
+1. Fork the repository
+2. Create a branch for your changes
+3. Write or edit MDX files in `content/docs/`
+4. Open a pull request with a clear description
+
+If you're unsure about something, open an issue first.

@@ -1,10 +1,16 @@
-import { source } from '@/lib/source';
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
-import { baseOptions } from '@/lib/layout.shared';
+import { GridPattern } from "@/components/grid-pattern";
+import { source } from "@/lib/source";
+import { DocsLayout } from "fumadocs-ui/layouts/notebook";
+import { baseOptions } from "@/lib/layout.shared";
 
-export default function Layout({ children }: LayoutProps<'/docs'>) {
+export default function Layout({ children }: LayoutProps<"/docs">) {
   return (
     <DocsLayout tree={source.getPageTree()} {...baseOptions()}>
+      <GridPattern
+        width={60}
+        height={60}
+        className="fixed inset-0 -z-10 mask-[linear-gradient(-160deg,white,transparent,transparent)]"
+      />
       {children}
     </DocsLayout>
   );

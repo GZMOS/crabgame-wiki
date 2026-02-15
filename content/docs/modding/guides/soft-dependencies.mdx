@@ -1,0 +1,63 @@
+---
+title: Soft Dependencies
+description: Make your mod compatible with optional dependencies like ModList
+---
+
+So you want your mod to have a dependency on another mod, without making your mod fail to run without that other mod present? It's very useful in the case you want to include your mod in ModList when that mod is installed! Here's how to make your mod soft-depend on ModList:
+
+<Steps>
+
+<Step>
+### Add the BepInDependency Attribute
+
+Add the following attribute to your BepInEx mod:
+
+```cs
+[BepInDependency("lammas123.ModList", BepInDependency.DependencyFlags.SoftDependency)]
+```
+
+This will let BepInEx know that the `lammas123.ModList` mod needs to load before yours, without preventing yours from loading if it's missing.
+</Step>
+
+<Step>
+### Create ModCompatibility.cs
+
+Add this new class in a file called something like `ModCompatibility.cs`:
+
+```cs
+using BepInEx.IL2CPP;
+using System.Runtime.CompilerServices;
+
+namespace YourNamespace
+{
+    internal static class ModListCompatibility
+    {
+        internal static bool? enabled;
+        internal static bool Enabled { get => enabled == null ? (bool)(enabled = IL2CPPChainloader.Instance.Plugins.ContainsKey("lammas123.ModList")) : enabled.Value; }
+
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        internal static void AddMod(string guid, bool required = false)
+            => ModList.Api.AddMod(guid, required);
+    }
+}
+```
+
+<Callout type="info">
+Adjust `YourNamespace` to fit your project's structure accordingly. We'll use this to tell ModList to add our mod, but only if ModList is Enabled. Calling AddMod if ModList is not present will throw an exception.
+</Callout>
+</Step>
+
+<Step>
+### Call it in Load
+
+Include this in your mod's `Load` method:
+
+```cs
+if (ModListCompatibility.Enabled)
+    ModListCompatibility.AddMod(MetadataHelper.GetMetadata(this).GUID, required: false);
+```
+
+Now your mod will appear on ModList, but only if ModList is present, and won't cause issues if it's not!
+</Step>
+
+</Steps>

@@ -1,0 +1,72 @@
+---
+title: Version Enforcement
+description: Make the host kick players who join without your mod installed
+---
+
+To make your mod required by all players, making the host kick those that join without the mod, you may use this script!
+
+Using Intermediary names from CrabDevKit:
+
+```cs
+using HarmonyLib;
+using SteamworksNative;
+
+namespace YourNamespace
+{
+    internal static class RequiredMod
+    {
+        private const string ModIdentifier = "YourModIdentifier"; // Must change! ex. $"lammas123.{MyPluginInfo.PLUGIN_GUID}";
+        private const string ModVersion = MyPluginInfo.PLUGIN_VERSION; // If you're certain there won't be incompatibilities between versions, you may just set this to "1"; to accept anyone with the mod
+
+        private static Harmony _harmony;
+
+        // Call this once in your mod's Load method
+        internal static void Init()
+        {
+            _harmony = new(ModIdentifier);
+            _harmony.PatchAll(typeof(RequiredMod));
+        }
+
+        // Logic to allow or prevent a client from joining
+        // clientModVersion will be string.Empty when the client doesn't have the mod, SteamMatchmaking.GetLobbyMemberData doesn't return null
+        private static bool MayClientJoin(string clientModVersion)
+        {
+            // Some may want to improve this, say, let everyone playing on 1.1.X join, but not those on other major/minor versions (SemVer)
+            return clientModVersion == ModVersion;
+        }
+
+
+        // Tell the host you have the mod via lobby member data
+        [HarmonyPatch(typeof(SteamManager), nameof(SteamManager.Method_Private_Void_LobbyEnter_t_PDM_1))]
+        [HarmonyPostfix]
+        internal static void PostSteamManagerLobbyEnter()
+            => SteamMatchmaking.SetLobbyMemberData(SteamManager.Instance.currentLobby, ModIdentifier, ModVersion);
+
+        // Kick clients that may not join when they request to
+        [HarmonyPatch(typeof(ServerHandle), nameof(ServerHandle.LoadMapRequest))]
+        [HarmonyPrefix]
+        internal static bool PreServerHandleLoadMapRequest(ulong param_0)
+        {
+            bool mayJoin = MayClientJoin(SteamMatchmaking.GetLobbyMemberData(SteamManager.Instance.currentLobby, new(param_0), ModIdentifier));
+
+            if (mayJoin)
+                return true;
+
+            LobbyManager.Instance.KickPlayer(param_0);
+            return false;
+        }
+    }
+}
+```
+
+The only modifications you'll need to include:
+
+- Changing the namespace to fit your project's structure
+- Putting `RequiredMod.Init();` in your mod's `Load` method
+- Setting `ModIdentifier` to something unique that won't clash with other mods
+
+Otherwise, you could also change `ModVersion` or the logic for `MayClientJoin` depending on your use case!
+
+<Callout type="warn">
+As of writing this, this script hasn't been fully tested, but will be tested and likely improved in the future.
+</Callout>
