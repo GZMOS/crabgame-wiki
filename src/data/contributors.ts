@@ -54,6 +54,20 @@ export const contributors = {
       },
     ],
   },
+  antropomeda: {
+    username: "antropomeda",
+    displayName: "Antropomeda",
+    bannerColor: "#9E89D4",
+    avatarUrl:
+      "https://cdn.discordapp.com/avatars/748579864919146526/05c094b376d1d4fa182111fa9e89a892.webp?size=1024",
+    links: [
+      {
+        url: "https://github.com/Antropomeda",
+        iconName: "Github",
+        label: "GitHub",
+      },
+    ],
+  },
   gzmos: {
     username: "gzmos",
     displayName: "GZMOS",

@@ -19,6 +19,7 @@ const contributorRoles: Record<ContributorId, string[]> = {
   lualt: ["Modder", "Snowflake Dev"],
   lammas123: ["Modder", "Docs", "Snowflake Dev"],
   o7moon: ["Modder", "Snowflake Dev"],
+  antropomeda: ["Modder"],
 };
 
 function ContributorCard({ id }: { id: ContributorId }) {
