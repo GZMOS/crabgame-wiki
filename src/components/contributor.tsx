@@ -8,7 +8,7 @@ import {
   type ContributorId,
 } from "@/data/contributors";
 
-export const ThunderstoreIcon = ({ size = 24 }: { size?: number }) => (
+export const ThunderstoreIcon = ({ size = 24 }: { size?: string | number }) => (
   <svg
     role="img"
     viewBox="0 0 24 24"
