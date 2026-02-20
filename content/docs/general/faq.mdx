@@ -5,6 +5,20 @@ description: Frequently asked questions about Crab Game and modding.
 
 ## General
 
+### Why am I crashing or seeing floating players?
+
+**Crashing**: If you're experiencing frequent crashes, install [Anti Crasher](https://thunderstore.io/c/crab-game/p/lammas123/AntiCrasher/) by <Contributor id="lammas123" />. P2P sessions and packets from those who aren't in your current lobby are discarded, along with packets which would result in invalid game state (NaN, Infinite, or impossible values) and packets that are normally unused by the game, avoiding any crashers targeting you.
+
+**Floating players**: This is caused by a Steam P2P update (around March 2024) that made it more difficult to establish P2P connections, especially in larger lobbies (12+ players). Install [CrabGameFloatingPlayerPatch](https://thunderstore.io/c/crab-game/p/lammas123/FloatingPlayerPatch/) by <Contributor id="lammas123" />. If you're hosting, the mod takes positions and rotations clients send to you and forwards them back out to all clients. If you're a client, the mod sends your position to the host more frequently to help work around the issue.
+
+<Callout type="warn">
+This does not fix the root issue, only works around it. Very large lobbies (30+) may still struggle to connect, and as the host you should aim to be near the majority of players.
+</Callout>
+
+<Callout type="info">
+Both mods are **recommended** for anyone playing in public lobbies, especially in larger ones.
+</Callout>
+
 ### Does modding get me banned?
 
 There is no official anti-cheat in Crab Game, and there have been no known bans for modding. Using mods that give you an unfair advantage in public lobbies is frowned upon by the community.
