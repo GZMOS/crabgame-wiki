@@ -2,7 +2,7 @@ import type { icons } from "lucide-react";
 
 interface LinkItem {
   url: string;
-  iconName: keyof typeof icons;
+  iconName: keyof typeof icons | "Thunderstore";
   label: string;
 }
 
@@ -24,6 +24,11 @@ export const contributors = {
         url: "https://github.com/lammas321",
         iconName: "Github",
         label: "GitHub",
+      },
+      {
+        url: "https://thunderstore.io/c/crab-game/p/lammas123/",
+        iconName: "Thunderstore",
+        label: "Thunderstore",
       },
     ],
   },
@@ -65,6 +70,11 @@ export const contributors = {
         url: "https://github.com/Antropomeda",
         iconName: "Github",
         label: "GitHub",
+      },
+      {
+        url: "https://thunderstore.io/c/crab-game/p/Crab_Hub/",
+        iconName: "Thunderstore",
+        label: "Thunderstore",
       },
     ],
   },

@@ -13,6 +13,12 @@ import {
   type ContributorData,
   type ContributorId,
 } from "@/data/contributors";
+import { ThunderstoreIcon } from "@/components/contributor";
+
+const customIcons = {
+  ...icons,
+  Thunderstore: ThunderstoreIcon,
+};
 
 const contributorRoles: Record<ContributorId, string[]> = {
   gzmos: ["Modder", "Docs"],
@@ -79,7 +85,7 @@ function ContributorCard({ id }: { id: ContributorId }) {
                 aria-label={link.label}
                 className="flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-foreground transition-colors"
               >
-                {createElement(icons[link.iconName], { size: 13 })}
+                {createElement(customIcons[link.iconName], { size: 13 })}
                 {link.label}
               </a>
             ))}
