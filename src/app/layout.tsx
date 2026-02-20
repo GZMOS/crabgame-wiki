@@ -10,11 +10,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://crabgame.dev"),
   title: {
-    template: "%s | Crab Game Modding",
-    default: "Crab Game Modding Documentation",
+    template: "%s | CrabGame.dev",
+    default: "CrabGame.dev - Community Wiki",
   },
   description:
-    "The ultimate guide to modding Crab Game with BepInEx and Il2Cpp.",
+    "The community wiki for everything Crab Game - modding guides, dedicated servers, and more.",
   icons: {
     icon: "/icon.png",
   },
