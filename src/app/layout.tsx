@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
   description:
     "The ultimate guide to modding Crab Game with BepInEx and Il2Cpp.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function Layout({ children }: LayoutProps<"/">) {

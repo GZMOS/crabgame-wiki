@@ -1,5 +1,9 @@
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
+const CrabIcon = () => (
+  <img src="/icon.png" alt="Crab Game" className="size-5" />
+);
+
 const DiscordIcon = () => (
   <svg
     role="img"
@@ -16,7 +20,12 @@ const DiscordIcon = () => (
 export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
-      title: "CrabGame.dev",
+      title: (
+        <span className="flex items-center gap-2">
+          <CrabIcon />
+          <span>CrabGame.dev</span>
+        </span>
+      ),
     },
     githubUrl: "https://github.com/GZMOS/crabgame-wiki",
     links: [
