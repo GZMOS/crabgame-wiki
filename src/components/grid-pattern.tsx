@@ -24,7 +24,12 @@ export function GridPattern({
   return (
     <svg
       aria-hidden="true"
-      className={["pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30", className].filter(Boolean).join(" ")}
+      className={[
+        "pointer-events-none absolute inset-0 h-full w-full fill-gray-400/30 stroke-gray-400/30",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       {...props}
     >
       <defs>

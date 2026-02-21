@@ -49,9 +49,7 @@ export default function HomePage() {
       />
 
       <footer className="absolute bottom-0 w-full border-t py-4 px-8 flex items-center justify-center gap-1 text-xs text-fd-muted-foreground">
-        <span>
-          © {new Date().getFullYear()} CrabGame.dev - Made with ❤️ by
-        </span>
+        <span>© {new Date().getFullYear()} CrabGame.dev - Made with ❤️ by</span>
         <Contributor id="gzmos" />
         <span>and the Crab Game community</span>
       </footer>
