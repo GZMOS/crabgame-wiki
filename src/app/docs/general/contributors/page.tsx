@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   DocsBody,
   DocsDescription,
@@ -6,14 +5,15 @@ import {
   DocsTitle,
 } from "fumadocs-ui/layouts/docs/page";
 import { icons } from "lucide-react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { createElement } from "react";
+import { ThunderstoreIcon } from "@/components/contributor";
 import {
-  contributors,
   type ContributorData,
   type ContributorId,
+  contributors,
 } from "@/data/contributors";
-import { ThunderstoreIcon } from "@/components/contributor";
 
 const customIcons = {
   ...icons,

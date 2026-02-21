@@ -3,9 +3,9 @@
 import { icons } from "lucide-react";
 import { createElement } from "react";
 import {
-  contributors,
   type ContributorData,
   type ContributorId,
+  contributors,
 } from "@/data/contributors";
 
 export const ThunderstoreIcon = ({ size = 24 }: { size?: string | number }) => (

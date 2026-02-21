@@ -1,8 +1,8 @@
+import { ArrowRight, BookOpenText, Github, Star } from "lucide-react";
+import Link from "next/link";
 import { Contributor } from "@/components/contributor";
 import { GridPattern } from "@/components/grid-pattern";
 import { MouseGlow } from "@/components/mouse-glow";
-import { ArrowRight, BookOpenText, Github, Star } from "lucide-react";
-import Link from "next/link";
 
 export default function HomePage() {
   return (
