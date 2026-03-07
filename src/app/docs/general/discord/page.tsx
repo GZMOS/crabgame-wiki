@@ -10,7 +10,13 @@ import { Circle, ExternalLink, Loader2, Users } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const inviteCodes = ["jBGMZqndT3", "4PVJQqXxRA", "R2h3GYzrT7", "xVTd9XtzR5"];
+const inviteCodes = [
+  "jBGMZqndT3",
+  "4PVJQqXxRA",
+  "R2h3GYzrT7",
+  "xVTd9XtzR5",
+  "nB38mguNmu",
+];
 
 interface DiscordInvite {
   code: string;
